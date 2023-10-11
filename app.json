@@ -5,9 +5,15 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
     ],
-    "name": "crowd-compass",
-    "slug": "crowd-compass"
+    "name": "taco-compass",
+    "slug": "taco-compass"
   }
 }
