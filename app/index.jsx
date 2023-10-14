@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import * as Location from 'expo-location';
 
-import { Compass, TacoCompass, TestCompass } from '../components';
+import { TacoCompass } from '../components';
 import { findClosestTacoBell } from '../utils';
 
 const Home = () => {
@@ -27,7 +27,11 @@ const Home = () => {
     }, []);
 
     const subToPosition = () => {
-        Location.watchPositionAsync((pos) => {
+        options = {
+            accuracy: Location.Accuracy.Highest,
+            distanceInterval: 3, // meters
+        };
+        Location.watchPositionAsync(options, (pos) => {
             setMyLocation(pos);
         }).then(
             (sub) => setPositionSub(sub),
@@ -38,6 +42,7 @@ const Home = () => {
     const unsubFromPosition = () => {
         positionSub && positionSub.remove();
         setPositionSub(null);
+        setMyLocation(null);
     };
 
     return (
