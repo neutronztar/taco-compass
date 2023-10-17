@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import * as Location from 'expo-location';
+import haversine from 'haversine-distance';
 
-import { Arrow } from '.';
+import Arrow from './Arrow';
 
 const TacoCompass = ({
     myLatitude,
@@ -44,14 +45,21 @@ const TacoCompass = ({
         finalAngle = (tBellAngle + heading.trueHeading).toString();
     }
 
-    // console.log('heading: ', heading);
-    // console.log('tBellAngle: ', tBellAngle);
-    // console.log('finalAngle: ', finalAngle);
+    let distance = null;
+    if (myLatitude && myLongitude && tacoBellLatitude && tacoBellLongitude) {
+        distance = haversine(
+            { lat: myLatitude, lon: myLongitude },
+            { lat: tacoBellLatitude, lon: tacoBellLongitude }
+        );
+    }
 
     return (
         <View>
             {finalAngle ? (
-                <Arrow angle={finalAngle} />
+                <>
+                    <Text>Distance: {distance} m</Text>
+                    <Arrow angle={finalAngle} />
+                </>
             ) : (
                 <Text>no angle data</Text>
             )}
