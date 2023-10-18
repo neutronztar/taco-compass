@@ -1,12 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
-import { View, Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import * as Location from 'expo-location';
 import haversine from 'haversine-distance';
 import axios from 'axios';
+import { Stack, useRouter } from 'expo-router';
 
-import { TacoCompass } from '../components';
+import Compass from '../components/Compass';
+import ScreenHeaderBtn from '../components/ScreenHeaderBtn';
+import Gear from '../svg/Gear';
+import TacoDab from '../svg/TacoDab';
+import COLORS from '../style/colors';
 
 const Home = () => {
+    const router = useRouter();
+
     const [positionSub, setPositionSub] = useState(null);
     const [closestTBell, setClosestTBell] = useState(null);
     const [myLocation, setMyLocation] = useState(null);
@@ -39,7 +46,7 @@ const Home = () => {
                     'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
                     {
                         params: {
-                            keyword: 'panda express',
+                            keyword: 'taco bell',
                             location:
                                 baseLocation.coords.latitude +
                                 ',' +
@@ -124,19 +131,43 @@ const Home = () => {
     };
 
     return (
-        <View style={{ flex: 1, backgroundColor: 'White' }}>
-            <Text>Taco Compass</Text>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.background }}>
+            <Stack.Screen
+                options={{
+                    headerStyle: { backgroundColor: COLORS.header },
+                    headerTitleStyle: { color: COLORS.headerTitle },
+                    headerShadowVisible: false,
+                    headerLeft: () => (
+                        <ScreenHeaderBtn
+                            Icon={TacoDab}
+                            handlePress={() => {
+                                router.push('/info');
+                            }}
+                        />
+                    ),
+                    headerRight: () => (
+                        <ScreenHeaderBtn
+                            Icon={Gear}
+                            handlePress={() => {
+                                router.push('/settings');
+                            }}
+                        />
+                    ),
+                    headerTitle: 'Taco Compass',
+                    headerTitleAlign: 'center',
+                }}
+            />
             <Text>Closest Taco Bell: {closestTBell?.vicinity}</Text>
             <Text>Error: {error}</Text>
             <Text>Loading: {loading ? 'true' : 'false'}</Text>
             <Text>API Count: {apiCount}</Text>
-            <TacoCompass
+            <Compass
                 myLatitude={myLocation?.coords?.latitude}
                 myLongitude={myLocation?.coords?.longitude}
                 tacoBellLatitude={closestTBell?.geometry?.location?.lat}
                 tacoBellLongitude={closestTBell?.geometry?.location?.lng}
             />
-        </View>
+        </SafeAreaView>
     );
 };
 
