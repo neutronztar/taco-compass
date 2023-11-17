@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView, View } from 'react-native';
 import * as Location from 'expo-location';
 import haversine from 'haversine-distance';
 import axios from 'axios';
@@ -10,6 +10,8 @@ import ScreenHeaderBtn from '../components/ScreenHeaderBtn';
 import Gear from '../svg/Gear';
 import TacoDab from '../svg/TacoDab';
 import COLORS from '../style/colors';
+
+const showDebug = false;
 
 const Home = () => {
     const router = useRouter();
@@ -157,15 +159,37 @@ const Home = () => {
                     headerTitleAlign: 'center',
                 }}
             />
-            <Text>Closest Taco Bell: {closestTBell?.vicinity}</Text>
-            <Text>Error: {error}</Text>
-            <Text>Loading: {loading ? 'true' : 'false'}</Text>
-            <Text>API Count: {apiCount}</Text>
+            {showDebug ? (
+                <View>
+                    <Text>Error: {error}</Text>
+                    <Text>Loading: {loading ? 'true' : 'false'}</Text>
+                    <Text>API Count: {apiCount}</Text>
+                    <Text>
+                        My Lat: {myLocation?.coords?.latitude?.toFixed(5)}
+                    </Text>
+                    <Text>
+                        My Lon: {myLocation?.coords?.longitude?.toFixed(5)}
+                    </Text>
+                    <Text>
+                        T Lat:{' '}
+                        {closestTBell?.geometry?.location?.lat?.toFixed(5)}
+                    </Text>
+                    <Text>
+                        T Lon:{' '}
+                        {closestTBell?.geometry?.location?.lng?.toFixed(5)}
+                    </Text>
+                </View>
+            ) : (
+                <></>
+            )}
+
             <Compass
                 myLatitude={myLocation?.coords?.latitude}
                 myLongitude={myLocation?.coords?.longitude}
                 tacoBellLatitude={closestTBell?.geometry?.location?.lat}
                 tacoBellLongitude={closestTBell?.geometry?.location?.lng}
+                address={closestTBell?.vicinity}
+                showDebug={showDebug}
             />
         </SafeAreaView>
     );

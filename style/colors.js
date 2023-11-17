@@ -3,6 +3,7 @@ const COLORS = {
     headerTitle: 'white',
     background: '#fe007c',
     accent: 'white',
+    paypal: '#ffd140',
 };
 
 export default COLORS;
