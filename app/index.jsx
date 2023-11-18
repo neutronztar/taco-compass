@@ -60,14 +60,15 @@ const Home = () => {
                             }}
                         />
                     ),
-                    headerRight: () => (
-                        <ScreenHeaderBtn
-                            Icon={Gear}
-                            handlePress={() => {
-                                router.push('/settings');
-                            }}
-                        />
-                    ),
+                    // Setting menu is commented for now, will uncomment when I add some settings
+                    // headerRight: () => (
+                    //     <ScreenHeaderBtn
+                    //         Icon={Gear}
+                    //         handlePress={() => {
+                    //             router.push('/settings');
+                    //         }}
+                    //     />
+                    // ),
                     headerTitle: 'Taco Compass',
                     headerTitleAlign: 'center',
                 }}
