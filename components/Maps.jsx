@@ -7,7 +7,7 @@ import axios from 'axios';
 import Compass from '../components/Compass';
 import calculateNearestStore from '../util/nearest';
 
-const DISTANCE_BETWEEN_CLOSENESS_CHECKS = 50; // meters
+const DISTANCE_BETWEEN_CLOSENESS_CHECKS = 25; // meters
 const DISTANCE_BETWEEN_API_HITS = 3000; // meters
 
 const Maps = ({ showDebug }) => {
@@ -32,6 +32,8 @@ const Maps = ({ showDebug }) => {
     // For debugging
     const [apiCount, setApiCount] = useState(0);
     const [baseLocationUpdateCount, setBaseLocationUpdateCount] = useState(0);
+    const baseLocationUpdateCountRef = useRef(null);
+    baseLocationUpdateCountRef.current = baseLocationUpdateCount;
 
     // Whenever apiLocation is updated, we ask the Taco Bell servers for a new list of Taco Bells
     useEffect(() => {
@@ -122,14 +124,14 @@ const Maps = ({ showDebug }) => {
         if (baseLocationRef.current == null) {
             console.log('initial set of base location');
             setBaseLocation(pos);
-            setBaseLocationUpdateCount(baseLocationUpdateCount + 1);
+            setBaseLocationUpdateCount(baseLocationUpdateCountRef.current + 1);
         } else if (
             haversine(pos.coords, baseLocationRef.current.coords) >
             DISTANCE_BETWEEN_CLOSENESS_CHECKS
         ) {
             console.log('updating base location');
             setBaseLocation(pos);
-            setBaseLocationUpdateCount(baseLocationUpdateCount + 1);
+            setBaseLocationUpdateCount(baseLocationUpdateCountRef.current + 1);
         }
 
         // Only update the API location if user moves far enough.

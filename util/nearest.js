@@ -16,14 +16,12 @@ const calculateNearestStore = (myLocation, nearByStores) => {
         // );
 
         if (d < shortestDistance) {
-            console.log(
-                'setting nearest to',
-                nearByStores[i].address.formattedAddress
-            );
             shortestDistance = d;
             nearest = nearByStores[i];
         }
     }
+
+    console.log('setting nearest to', nearest.address.formattedAddress);
 
     return nearest;
 };

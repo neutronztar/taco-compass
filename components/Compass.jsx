@@ -121,9 +121,10 @@ const Compass = ({
                             </Text>
                             <Text
                                 style={{
-                                    fontSize: 40,
+                                    fontSize: 30,
                                     fontWeight: 'bold',
                                     textAlign: 'center',
+                                    paddingHorizontal: 20,
                                 }}
                             >
                                 {address}
@@ -146,7 +147,13 @@ const Compass = ({
                             </View>
                         </View>
                         <View style={{ flex: 1, justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 40, fontWeight: 'bold' }}>
+                            <Text
+                                style={{
+                                    fontSize: 45,
+                                    fontWeight: 'bold',
+                                    paddingHorizontal: 20,
+                                }}
+                            >
                                 {distance.toLocaleString(undefined, {
                                     maximumFractionDigits: 0,
                                 })}{' '}

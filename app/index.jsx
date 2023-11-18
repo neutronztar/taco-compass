@@ -10,7 +10,7 @@ import TacoDab from '../svg/TacoDab';
 import Taco from '../svg/Taco';
 import COLORS from '../style/colors';
 
-const showDebug = true;
+const showDebug = false;
 
 const Home = () => {
     const router = useRouter();
