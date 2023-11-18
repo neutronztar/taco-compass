@@ -21,7 +21,7 @@ const calculateNearestStore = (myLocation, nearByStores) => {
         }
     }
 
-    console.log('setting nearest to', nearest.address.formattedAddress);
+    console.log('setting nearest to', nearest?.address?.formattedAddress);
 
     return nearest;
 };

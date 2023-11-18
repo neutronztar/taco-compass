@@ -62,8 +62,15 @@ const Maps = ({ showDebug }) => {
                         response.data?.nearByStores?.length,
                         'nearby stores'
                     );
-                    setNearByStores(response.data.nearByStores);
-                    setError(null);
+                    setNearByStores(response.data?.nearByStores);
+                    if (
+                        response.data?.nearByStores &&
+                        response.data?.nearByStores.length > 0
+                    ) {
+                        setError(null);
+                    } else {
+                        setError('No nearby Taco Bells found');
+                    }
                 })
                 .catch((err) => {
                     console.log('error with request');
