@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import { View, Text } from 'react-native';
 import * as Location from 'expo-location';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import LatLonS from 'geodesy/latlon-spherical';
 
 import TacoCompass from '../svg/TacoCompass';
+import LoadingTaco from './LoadingTaco';
 
 const orientationCompensation = {
     0: 0, //   UNKNOWN
@@ -24,7 +25,6 @@ const Compass = ({
 }) => {
     const [headingSub, setHeadingSub] = useState(null);
     const [heading, setHeading] = useState(null);
-
     const [screenOrientation, setScreenOrientation] = useState(null);
 
     const tBellAngle = useMemo(() => {
@@ -155,7 +155,7 @@ const Compass = ({
                         </View>
                     </>
                 ) : (
-                    <Text>no angle data</Text>
+                    <LoadingTaco />
                 )}
             </View>
             {showDebug ? (
