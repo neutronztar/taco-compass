@@ -20,6 +20,19 @@
             ]
         ],
         "name": "taco-compass",
-        "slug": "taco-compass"
+        "slug": "taco-compass",
+        "extra": {
+            "router": {
+                "origin": false
+            },
+            "eas": {
+                "projectId": "f6cecff2-9ebf-4ef0-b278-94f2b64f3bcc"
+            }
+        },
+        "ios": {
+            "bundleIdentifier": "com.nickwallick.tacocompass",
+            "icon": "./icons/taco.png"
+        },
+        "userInterfaceStyle": "dark"
     }
 }
