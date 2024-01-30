@@ -31,7 +31,7 @@
         },
         "ios": {
             "bundleIdentifier": "com.nickwallick.tacocompass",
-            "icon": "./icons/taco.png"
+            "icon": "./icons/AppIcon.png"
         },
         "userInterfaceStyle": "dark"
     }
