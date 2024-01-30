@@ -2,7 +2,7 @@
 
 A compass, but instead of pointing north it points somewhere much more important: Taco Bell.
 
-<img src="https://github.com/neutronztar/taco-compass/icons/Preview.jpeg?raw=true" alt="screenshot" width="600" />
+<img src="https://github.com/neutronztar/taco-compass/blob/master/icons/Preview.jpeg" alt="screenshot" width="600" />
 
 Made with React Native and Expo Router
 
