@@ -5,7 +5,6 @@ import { Stack, useRouter } from 'expo-router';
 
 import Maps from '../components/Maps';
 import ScreenHeaderBtn from '../components/ScreenHeaderBtn';
-import TacoDab from '../svg/TacoDab';
 import Taco from '../svg/Taco';
 import COLORS from '../style/colors';
 
@@ -53,7 +52,7 @@ const Home = () => {
                     headerShadowVisible: false,
                     headerLeft: () => (
                         <ScreenHeaderBtn
-                            Icon={TacoDab}
+                            Icon={Taco}
                             handlePress={() => {
                                 router.push('/info');
                             }}

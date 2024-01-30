@@ -109,6 +109,37 @@ const Compass = ({
             >
                 {finalAngle ? (
                     <>
+                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                            <Text
+                                style={{
+                                    fontSize: 45,
+                                    fontWeight: 'bold',
+                                    paddingHorizontal: 20,
+                                }}
+                            >
+                                {distance.toLocaleString(undefined, {
+                                    maximumFractionDigits: 0,
+                                })}{' '}
+                                meters
+                            </Text>
+                        </View>
+                        <View
+                            style={{
+                                flex: 2,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                        >
+                            {/* we wrap the SVG in a view that preserves its aspect ratio */}
+                            <View style={{ aspectRatio: 1 }}>
+                                <TacoCompass
+                                    angle={finalAngle}
+                                    height="100%"
+                                    width="100%"
+                                />
+                            </View>
+                        </View>
+
                         <View
                             style={{
                                 flex: 1,
@@ -128,36 +159,6 @@ const Compass = ({
                                 }}
                             >
                                 {address}
-                            </Text>
-                        </View>
-                        <View
-                            style={{
-                                flex: 2,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}
-                        >
-                            {/* we wrap the SVG in a view that preserves its aspect ratio */}
-                            <View style={{ aspectRatio: 1 }}>
-                                <TacoCompass
-                                    angle={finalAngle}
-                                    height="100%"
-                                    width="100%"
-                                />
-                            </View>
-                        </View>
-                        <View style={{ flex: 1, justifyContent: 'center' }}>
-                            <Text
-                                style={{
-                                    fontSize: 45,
-                                    fontWeight: 'bold',
-                                    paddingHorizontal: 20,
-                                }}
-                            >
-                                {distance.toLocaleString(undefined, {
-                                    maximumFractionDigits: 0,
-                                })}{' '}
-                                meters
                             </Text>
                         </View>
                     </>
