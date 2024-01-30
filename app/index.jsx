@@ -106,7 +106,6 @@ const Home = () => {
                             permission, then press the taco to refresh.
                         </Text>
                     </View>
-
                     <View
                         style={{
                             flex: 1,

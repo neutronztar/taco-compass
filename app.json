@@ -20,7 +20,7 @@
             ]
         ],
         "name": "TacoCompass",
-        "slug": "TacoCompass",
+        "slug": "taco-compass",
         "extra": {
             "router": {
                 "origin": false
