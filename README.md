@@ -1,14 +1,24 @@
-# Expo Router Example
+# Taco Compass
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+A compass, but instead of pointing north it points somewhere much more important: Taco Bell.
 
-## 🚀 How to use
+<img src="https://github.com/neutronztar/taco-compass/icons/Preview.jpeg?raw=true" alt="screenshot" width="600" />
+
+Made with React Native and Expo Router
+
+## 🚀 How to run
 
 ```sh
-npx create-expo-app -e with-router
+npm start
+```
+
+## 🚀 How to build
+
+```sh
+eas build
 ```
 
 ## 📝 Notes
 
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
+-   [Expo Router: Docs](https://expo.github.io/router)
+-   [Expo Router: Repo](https://github.com/expo/router)
